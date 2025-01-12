@@ -23,7 +23,7 @@ The SPIDER dataset contains (human) lumbar spine magnetic resonance images (MRI)
 - van der Graaf, J.W., van Hooff, M.L., Buckens, C.F.M. et al. *Lumbar spine segmentation in MR images: a dataset and a public benchmark.*
   Sci Data 11, 264 (2024). https://doi.org/10.1038/s41597-024-03090-w
 
-The dataset format has been modified slightly to support loading through the HuggingFace `datasets` library (see Data Modifications below). 
+The dataset format has been modified slightly to support loading through the Hugging Face `datasets` library (see the Data Modifications section below). 
 
 The researchers have made the original data available on [Zenodo](https://zenodo.org/records/10159290). More information can be found at [SPIDER Grand Challenge](https://spider.grand-challenge.org/).
 
@@ -48,7 +48,7 @@ The researchers have made the original data available on [Zenodo](https://zenodo
 
 In addition to the information in this README, several detailed tutorials for this dataset are provided in the [tutorials](tutorials) folder:
 
-1. [Loading the SPIDER Dataset from HuggingFace](tutorials/load_data.ipynb)
+1. [Loading the SPIDER Dataset from Hugging Face](tutorials/load_data.ipynb)
 2. [Building a U-Net CNN Model for Magnetic Resonance Imaging (MRI) Segmentation](tutorials/UNet_SPIDER.ipynb)
 
 <br>
@@ -112,11 +112,11 @@ changes can be loaded with the corresponding image data.
 
 # Data Modifications
 
-This version of the SPIDER dataset (i.e., available through the HuggingFace `datasets` library) differs from the original 
+This version of the SPIDER dataset (i.e., available through the Hugging Face `datasets` library) differs from the original 
 data available on [Zenodo](https://zenodo.org/records/8009680) in two key ways:
 
 1. Image Rescaling/Resizing: The original 3D volumetric MRI data are stored as .mha files and do not have a standardized height, width, depth, and image resolution. 
-To enable the data to be loaded through the HuggingFace `datasets` library, all 447 MRI series are standardized to have height and width of `(512, 512)` and (unsigned) 16-bit integer resolution.
+To enable the data to be loaded through the Hugging Face `datasets` library, all 447 MRI series are standardized to have height and width of `(512, 512)` and (unsigned) 16-bit integer resolution.
 Segmentation masks have the same height and width dimension but are (unsigned) 8-bit integer resolution.
 The depth dimension has not been modified; rather, each scan is formatted as a sequence of `(512, 512)` grayscale images, where the index in the sequence indicates the depth value.
 N-dimensional interpolation is used to resize and/or rescale the images (via the `skimage.transform.resize` and `skimage.img_as_uint` functions). 
@@ -124,7 +124,7 @@ If you need a different standardization, you have two options:
 
     i. Pass your preferred height and width size as a `Tuple[int, int]` to the `resize_shape` argument in `load_dataset` (see the [LoadData Tutorial](placeholder)); OR
 	
-	ii. After loading the dataset from HuggingFace, use the `SimpleITK` library to import each image using the file path of the locally cached .mha file. 
+	ii. After loading the dataset from Hugging Face, use the `SimpleITK` library to import each image using the file path of the locally cached .mha file. 
 	The local cache file path is provided for each example when iterating over the dataset (again, see the [LoadData Tutorial](placeholder)).
 
 2. Train, Validation, and Test Set: The original dataset contained 257 unique studies (i.e., patients) that were partitioned into 218 (85%) studies for the public training/validation set
@@ -230,7 +230,7 @@ The dataset is split as follows:
 		- Sagittal T2-SPACE: 8 images
 
 An additional hidden test set provided by the paper authors
-(i.e., not available via HuggingFace) is available on the 
+(i.e., not available via Hugging Face) is available on the 
 [SPIDER Grand Challenge](https://spider.grand-challenge.org/spiders-challenge/).
 
 # Image Resolution
@@ -240,7 +240,7 @@ An additional hidden test set provided by the paper authors
 > (https://spider.grand-challenge.org/data/)
 
 Note that all images are rescaled to have unsigned 16-bit integer resolution
-for compatibility with the HuggingFace `datasets` library. If you want to use the original resolution, you can
+for compatibility with the Hugging Face `datasets` library. If you want to use the original resolution, you can
 load the original images from the local cache indicated in each example's `image_path` and `mask_path` features.
 See the [tutorial](tutorials/load_data.ipynb) for more information.
 
@@ -265,6 +265,6 @@ against the original data provided by the researchers on [Zenodo](https://zenodo
 
 ### Known Issues/Bugs
 
-1. Serializing data into Apache Arrow format is required to make the dataset available via HuggingFace's `datasets` library. However, it can introduce some segmentation
+1. Serializing data into Apache Arrow format is required to make the dataset available via Hugging Face's `datasets` library. However, it can introduce some segmentation
 mask integer values that do not map exactly to a defined [anatomical feature category](https://grand-challenge.org/algorithms/spider-baseline-iis/).
 See the data loading [tutorial](tutorials/load_data.ipynb) for more information and temporary work-arounds.
