@@ -20,12 +20,17 @@ task_categories:
 
 The SPIDER dataset contains (human) lumbar spine magnetic resonance images (MRI) and segmentation masks from the following paper:
 
-- van der Graaf, J.W., van Hooff, M.L., Buckens, C.F.M. et al. *Lumbar spine segmentation in MR images: a dataset and a public benchmark.*
+> van der Graaf, J.W., van Hooff, M.L., Buckens, C.F.M. et al. *Lumbar spine segmentation in MR images: a dataset and a public benchmark.*
   Sci Data 11, 264 (2024). https://doi.org/10.1038/s41597-024-03090-w
 
-The dataset format has been modified slightly to support loading through the Hugging Face `datasets` library (see the Data Modifications section below). 
+The format of the data has been modified slightly to support loading through the Hugging Face `datasets` library (see the *Data Modifications* section below). The original data are available on [Zenodo](https://zenodo.org/records/10159290). More information can be found at [SPIDER Grand Challenge](https://spider.grand-challenge.org/).
 
-The researchers have made the original data available on [Zenodo](https://zenodo.org/records/10159290). More information can be found at [SPIDER Grand Challenge](https://spider.grand-challenge.org/).
+Additionally, two detailed tutorials are provided for this dataset:
+
+1. [Loading the SPIDER Dataset from Hugging Face](tutorials/load_data.ipynb)
+2. [Building a U-Net CNN Model for Magnetic Resonance Imaging (MRI) Segmentation](tutorials/UNet_SPIDER.ipynb)
+
+<br>
 
 <figure>
   <img src="docs/ex1.png" alt="Example MRI Image" style="height:300px;">
@@ -46,12 +51,10 @@ The researchers have made the original data available on [Zenodo](https://zenodo
 
 # Tutorials
 
-In addition to the information in this README, several detailed tutorials for this dataset are provided in the [tutorials](tutorials) folder:
+In addition to the information in this README, two detailed tutorials for this dataset are provided in the [tutorials](tutorials) folder:
 
 1. [Loading the SPIDER Dataset from Hugging Face](tutorials/load_data.ipynb)
 2. [Building a U-Net CNN Model for Magnetic Resonance Imaging (MRI) Segmentation](tutorials/UNet_SPIDER.ipynb)
-
-<br>
 
 # Table of Contents (TOC)
 
@@ -250,9 +253,9 @@ See the [tutorial](tutorials/load_data.ipynb) for more information.
 
 The dataset is published under a [CC-BY 4.0 license](https://creativecommons.org/licenses/by/4.0/legalcode).
 
-The [tutorials](tutorials) in this repository are published under an [MIT license](https://github.com/cdoswald/SPIDER/blob/main/LICENSE).
+The [tutorials](tutorials) are published under an [MIT license](https://github.com/cdoswald/SPIDER/blob/main/LICENSE).
 
-The data curation code ([SPIDER.py](SPIDER.py) is published under an [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) (mandated by the Hugging Face dataset loading script [template](https://github.com/huggingface/datasets/blob/main/templates/new_dataset_script.py).
+The data curation code ([SPIDER.py](SPIDER.py)) is published under an [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0) (mandated by the Hugging Face dataset loading script [template](https://github.com/huggingface/datasets/blob/main/templates/new_dataset_script.py)).
 
 ### Citation
 
@@ -260,7 +263,7 @@ The data curation code ([SPIDER.py](SPIDER.py) is published under an [Apache Lic
 
 ### Disclaimer
 
-I am not affiliated in any way with the aforementioned paper, researchers, or organizations. Please validate any findings using this Hugging Face dataset
+I am not affiliated in any way with the aforementioned paper, researchers, or organizations. If you are using this Hugging Face dataset for research or analysis, please validate your findings
 against the original data provided by the researchers on [Zenodo](https://zenodo.org/records/10159290).
 
 ### Known Issues/Bugs
